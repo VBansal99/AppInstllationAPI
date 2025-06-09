@@ -1,0 +1,30 @@
+Create Database apps;
+use apps;
+CREATE TABLE apps_to_install (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    app_name VARCHAR(100),
+    package_name VARCHAR(100),
+    apk_filename VARCHAR(255), -- Just the filename, like "myapp.apk"
+    apk_path VARCHAR(255),     -- Full path, e.g., "C:/PrimebookAPKs/myapp.apk"
+    assigned_ip VARCHAR(50),   -- IP of the device to install it on
+    version_code INT,
+    uploaded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+INSERT INTO apps_to_install (app_name, package_name, apk_filename, apk_path, assigned_ip, version_code)VALUES 
+('antutu-benchmark-v10', 'com.antutu.ABenchMark', 'antutu-benchmark-v10.apk', 'C:\Users\varun\OneDrive\Documents\Apk files\antutu-benchmark-v10.apk', '192.168.1.50', 1),
+('aurora-store-4-7-0', 'com.aurora.store', 'aurora-store-4-7-0.apk', 'C:\Users\varun\OneDrive\Documents\Apk files\aurora-store-4-7-0.apk', '192.168.1.50', 1),
+('BatteryLog_v1.4', 'la.shiro.batterylog', 'BatteryLog_v1.4.apk', 'C:\Users\varun\OneDrive\Documents\Apk files\BatteryLog_v1.4.apk', '192.168.1.50', 1);
+
+
+UPDATE apps_to_install
+SET assigned_ip = '192.168.10.169'
+WHERE id = 1;
+
+UPDATE apps_to_install
+SET apk_path = 'C:\\Users\\varun\\OneDrive\\Documents\\Apk files\\antutu-benchmark-v10.apk'
+WHERE id = 1;
+
+Select * from apps_to_install;
+
+
